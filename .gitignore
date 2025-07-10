@@ -1,0 +1,25 @@
+# Ignore Gradle files
+.gradle/
+
+# Ignore build files
+build/
+
+# Ignore bin directories and files
+bin/
+**/bin/
+
+# Ignore JAR files
+*.jar
+
+# Ignore package files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Ignore log files
+*.log
+**/*.log
+
+# Ignore data directory
+/data/ 
