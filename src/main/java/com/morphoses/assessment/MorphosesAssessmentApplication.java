@@ -1,0 +1,12 @@
+package com.morphoses.assessment;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MorphosesAssessmentApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MorphosesAssessmentApplication.class, args);
+    }
+}
