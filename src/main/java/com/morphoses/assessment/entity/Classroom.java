@@ -7,46 +7,47 @@ import java.util.UUID;
 @Entity
 @Table(name = "classrooms")
 public class Classroom {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // Using AUTO for UUID generation, or define custom generator
-    private UUID id;
-    private String name;
+  @Id
+  @GeneratedValue(
+      strategy = GenerationType.AUTO) // Using AUTO for UUID generation, or define custom generator
+  private UUID id;
 
-    public Classroom() {
-    }
+  private String name;
 
-    public Classroom(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+  public Classroom() {}
 
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
+  public Classroom(UUID id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+  // Getters and Setters
+  public UUID getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(UUID id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Classroom classroom = (Classroom) o;
-        return Objects.equals(id, classroom.id);
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Classroom classroom = (Classroom) o;
+    return Objects.equals(id, classroom.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

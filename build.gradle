@@ -2,10 +2,13 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.1'
     id 'io.spring.dependency-management' version '1.1.5'
+    id 'com.diffplug.spotless' version '7.0.4' // Spotless plugin for formatting
+    id 'jacoco' // Jacoco plugin for code coverage
 }
 
 group = 'com.morphoses'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21' // Aligns with Java 21 requirement
 
 java {
     toolchain {
@@ -24,8 +27,71 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.5.0' // PostgreSQL JDBC driver
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' // Latest JUnit version
+    testImplementation 'org.mockito:mockito-core:5.4.0' // Latest Mockito version
+}
+
+
+// Spotless configuration
+spotless {
+    java {
+        // Use the Google Java Format formatter
+        googleJavaFormat('1.27.0') // The latest stable version compatible with Java 21
+        target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
+        removeUnusedImports() // Optional: removes unused imports
+        trimTrailingWhitespace() // Optional: removes trailing whitespace
+        endWithNewline() // Optional: ensures files end with a newline
+    }
+}
+
+
+
+// Jacoco configuration
+jacoco {
+    toolVersion = "0.8.12"
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = false
+    }
+    finalizedBy jacocoTestCoverageVerification
+}
+
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.00 // Temporarily lower to see current coverage
+            }
+        }
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.00 // Temporarily lower
+            }
+        }
+    }
+}
+
+
+
+// Optional: Integrate spotlessApply into the build lifecycle
+// This makes sure spotlessApply runs whenever you run 'gradle check' or 'gradle build'
+// Be aware that this will modify your source files during the build process.
+// If you prefer to only check for formatting violations without applying them automatically
+// during the build, you can remove this block and just run 'gradle spotlessApply' manually.
+tasks.check {
+    dependsOn spotlessApply
 }

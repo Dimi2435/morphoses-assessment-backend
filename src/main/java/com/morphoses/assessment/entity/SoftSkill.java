@@ -7,46 +7,46 @@ import java.util.UUID;
 @Entity
 @Table(name = "soft_skills")
 public class SoftSkill {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
 
-    public SoftSkill() {
-    }
+  private String name;
 
-    public SoftSkill(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+  public SoftSkill() {}
 
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
+  public SoftSkill(UUID id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+  // Getters and Setters
+  public UUID getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(UUID id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SoftSkill softSkill = (SoftSkill) o;
-        return Objects.equals(id, softSkill.id);
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SoftSkill softSkill = (SoftSkill) o;
+    return Objects.equals(id, softSkill.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

@@ -5,49 +5,49 @@ import java.util.Set;
 import java.util.UUID;
 
 public class SessionCreateRequest {
-    private UUID classroomId;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private Set<UUID> softSkillIds;
-    private Set<UUID> participantIds; // Includes both kids and instructors
+  private UUID classroomId;
+  private LocalDateTime startTime;
+  private LocalDateTime endTime;
+  private Set<UUID> softSkillIds;
+  private Set<UUID> participantIds; // Includes both kids and instructors
 
-    public UUID getClassroomId() {
-        return classroomId;
-    }
+  public UUID getClassroomId() {
+    return classroomId;
+  }
 
-    public void setClassroomId(UUID classroomId) {
-        this.classroomId = classroomId;
-    }
+  public void setClassroomId(UUID classroomId) {
+    this.classroomId = classroomId;
+  }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
+  public LocalDateTime getStartTime() {
+    return startTime;
+  }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
+  public void setStartTime(LocalDateTime startTime) {
+    this.startTime = startTime;
+  }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
+  public LocalDateTime getEndTime() {
+    return endTime;
+  }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
+  public void setEndTime(LocalDateTime endTime) {
+    this.endTime = endTime;
+  }
 
-    public Set<UUID> getSoftSkillIds() {
-        return softSkillIds;
-    }
+  public Set<UUID> getSoftSkillIds() {
+    return softSkillIds;
+  }
 
-    public void setSoftSkillIds(Set<UUID> softSkillIds) {
-        this.softSkillIds = softSkillIds;
-    }
+  public void setSoftSkillIds(Set<UUID> softSkillIds) {
+    this.softSkillIds = softSkillIds;
+  }
 
-    public Set<UUID> getParticipantIds() {
-        return participantIds;
-    }
+  public Set<UUID> getParticipantIds() {
+    return participantIds;
+  }
 
-    public void setParticipantIds(Set<UUID> participantIds) {
-        this.participantIds = participantIds;
-    }
+  public void setParticipantIds(Set<UUID> participantIds) {
+    this.participantIds = participantIds;
+  }
 }

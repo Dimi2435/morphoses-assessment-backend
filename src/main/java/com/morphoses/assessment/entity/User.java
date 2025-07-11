@@ -8,60 +8,59 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_type", nullable = false)
-    private UserType userType;
-    
-    private String name;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "user_type", nullable = false)
+  private UserType userType;
 
-    public User() {
-    }
+  private String name;
 
-    public User(UUID id, UserType userType, String name) {
-        this.id = id;
-        this.userType = userType;
-        this.name = name;
-    }
+  public User() {}
 
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
+  public User(UUID id, UserType userType, String name) {
+    this.id = id;
+    this.userType = userType;
+    this.name = name;
+  }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+  // Getters and Setters
+  public UUID getId() {
+    return id;
+  }
 
-    public UserType getUserType() {
-        return userType;
-    }
+  public void setId(UUID id) {
+    this.id = id;
+  }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
-    }
+  public UserType getUserType() {
+    return userType;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setUserType(UserType userType) {
+    this.userType = userType;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return Objects.equals(id, user.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }
