@@ -6,8 +6,9 @@ import com.morphoses.assessment.entity.Session;
 import com.morphoses.assessment.entity.SessionParticipant;
 import com.morphoses.assessment.entity.SoftSkill;
 import com.morphoses.assessment.entity.User;
-import com.morphoses.assessment.exception.EntityNotFoundException;
 import com.morphoses.assessment.exception.InvalidOperationException;
+import com.morphoses.assessment.exception.SessionNotFoundException;
+import com.morphoses.assessment.exception.UserNotFoundException;
 import com.morphoses.assessment.repository.InstructorAnswerRepository;
 import com.morphoses.assessment.repository.KidAnswerRepository;
 import com.morphoses.assessment.repository.SessionParticipantRepository;
@@ -45,11 +46,11 @@ public class ReportService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
     User kid =
         userRepository
             .findById(kidId)
-            .orElseThrow(() -> new EntityNotFoundException("Kid with ID " + kidId + " not found."));
+            .orElseThrow(() -> new UserNotFoundException("Kid with ID " + kidId + " not found."));
 
     if (kid.getUserType() != UserType.KID) {
       throw new InvalidOperationException("User with ID " + kidId + " is not a kid.");
@@ -131,7 +132,7 @@ public class ReportService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
 
     Map<String, Object> summary = new HashMap<>();
     summary.put("sessionId", session.getId());

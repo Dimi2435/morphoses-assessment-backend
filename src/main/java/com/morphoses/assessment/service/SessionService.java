@@ -5,8 +5,11 @@ import com.morphoses.assessment.entity.Session;
 import com.morphoses.assessment.entity.SessionParticipant;
 import com.morphoses.assessment.entity.SoftSkill;
 import com.morphoses.assessment.entity.User;
-import com.morphoses.assessment.exception.EntityNotFoundException;
+import com.morphoses.assessment.exception.ClassroomNotFoundException;
 import com.morphoses.assessment.exception.InvalidOperationException;
+import com.morphoses.assessment.exception.SessionNotFoundException;
+import com.morphoses.assessment.exception.SoftSkillNotFoundException;
+import com.morphoses.assessment.exception.UserNotFoundException;
 import com.morphoses.assessment.repository.ClassroomRepository;
 import com.morphoses.assessment.repository.SessionParticipantRepository;
 import com.morphoses.assessment.repository.SessionRepository;
@@ -43,7 +46,7 @@ public class SessionService {
             .findById(classroomId)
             .orElseThrow(
                 () ->
-                    new EntityNotFoundException(
+                    new ClassroomNotFoundException(
                         "Classroom with ID " + classroomId + " not found."));
 
     if (softSkillIds == null || softSkillIds.isEmpty() || softSkillIds.size() > 3) {
@@ -57,7 +60,7 @@ public class SessionService {
                         .findById(id)
                         .orElseThrow(
                             () ->
-                                new EntityNotFoundException(
+                                new SoftSkillNotFoundException(
                                     "SoftSkill with ID " + id + " not found.")))
             .collect(Collectors.toSet());
 
@@ -71,8 +74,7 @@ public class SessionService {
                     userRepository
                         .findById(id)
                         .orElseThrow(
-                            () ->
-                                new EntityNotFoundException("User with ID " + id + " not found.")))
+                            () -> new UserNotFoundException("User with ID " + id + " not found.")))
             .collect(Collectors.toSet());
 
     // Validate at least one instructor and one kid (typical classroom setup, though not explicitly
@@ -109,13 +111,13 @@ public class SessionService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
     User instructor =
         userRepository
             .findById(instructorId)
             .orElseThrow(
                 () ->
-                    new EntityNotFoundException(
+                    new UserNotFoundException(
                         "Instructor with ID " + instructorId + " not found."));
 
     if (instructor.getUserType() != UserType.INSTRUCTOR) {
@@ -143,11 +145,11 @@ public class SessionService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
     User kid =
         userRepository
             .findById(kidId)
-            .orElseThrow(() -> new EntityNotFoundException("Kid with ID " + kidId + " not found."));
+            .orElseThrow(() -> new UserNotFoundException("Kid with ID " + kidId + " not found."));
 
     if (kid.getUserType() != UserType.KID) {
       throw new InvalidOperationException("User with ID " + kidId + " is not a kid.");
@@ -173,6 +175,6 @@ public class SessionService {
   public Session getSessionById(UUID id) {
     return sessionRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Session with ID " + id + " not found."));
+        .orElseThrow(() -> new SessionNotFoundException("Session not found with ID: " + id));
   }
 }

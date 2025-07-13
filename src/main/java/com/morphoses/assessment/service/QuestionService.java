@@ -6,8 +6,9 @@ import com.morphoses.assessment.entity.Session;
 import com.morphoses.assessment.entity.SessionParticipant;
 import com.morphoses.assessment.entity.SoftSkill;
 import com.morphoses.assessment.entity.User;
-import com.morphoses.assessment.exception.EntityNotFoundException;
 import com.morphoses.assessment.exception.InvalidOperationException;
+import com.morphoses.assessment.exception.SessionNotFoundException;
+import com.morphoses.assessment.exception.UserNotFoundException;
 import com.morphoses.assessment.repository.InstructorAnswerRepository;
 import com.morphoses.assessment.repository.KidAnswerRepository;
 import com.morphoses.assessment.repository.SessionParticipantRepository;
@@ -40,12 +41,11 @@ public class QuestionService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
     User user =
         userRepository
             .findById(userId)
-            .orElseThrow(
-                () -> new EntityNotFoundException("User with ID " + userId + " not found."));
+            .orElseThrow(() -> new UserNotFoundException("User with ID " + userId + " not found."));
 
     // Check if user is a participant of the session
     SessionParticipant participant =
@@ -97,12 +97,11 @@ public class QuestionService {
         sessionRepository
             .findById(sessionId)
             .orElseThrow(
-                () -> new EntityNotFoundException("Session with ID " + sessionId + " not found."));
+                () -> new SessionNotFoundException("Session with ID " + sessionId + " not found."));
     User user =
         userRepository
             .findById(userId)
-            .orElseThrow(
-                () -> new EntityNotFoundException("User with ID " + userId + " not found."));
+            .orElseThrow(() -> new UserNotFoundException("User with ID " + userId + " not found."));
 
     // Check if user is a participant of the session
     SessionParticipant participant =

@@ -1,7 +1,7 @@
 package com.morphoses.assessment.service;
 
 import com.morphoses.assessment.entity.Classroom;
-import com.morphoses.assessment.exception.EntityNotFoundException;
+import com.morphoses.assessment.exception.ClassroomNotFoundException;
 import com.morphoses.assessment.repository.ClassroomRepository;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,6 @@ public class ClassroomService {
   public Classroom getClassroomById(UUID id) {
     return classroomRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Classroom with ID " + id + " not found."));
+        .orElseThrow(() -> new ClassroomNotFoundException("Classroom not found with ID: " + id));
   }
 }

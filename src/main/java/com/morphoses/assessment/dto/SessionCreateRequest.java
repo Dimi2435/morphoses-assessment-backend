@@ -1,14 +1,25 @@
 package com.morphoses.assessment.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+@Schema(description = "Request object for creating a session")
 public class SessionCreateRequest {
+  @Schema(description = "The ID of the classroom for the session")
   private UUID classroomId;
+
+  @Schema(description = "The start time of the session")
   private LocalDateTime startTime;
+
+  @Schema(description = "The end time of the session")
   private LocalDateTime endTime;
+
+  @Schema(description = "A set of SoftSkill IDs associated with the session")
   private Set<UUID> softSkillIds;
+
+  @Schema(description = "A set of participant IDs for the session")
   private Set<UUID> participantIds; // Includes both kids and instructors
 
   public UUID getClassroomId() {

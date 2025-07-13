@@ -1,7 +1,7 @@
 package com.morphoses.assessment.service;
 
 import com.morphoses.assessment.entity.User;
-import com.morphoses.assessment.exception.EntityNotFoundException;
+import com.morphoses.assessment.exception.UserNotFoundException;
 import com.morphoses.assessment.repository.UserRepository;
 import com.morphoses.assessment.util.UserType;
 import java.util.UUID;
@@ -23,6 +23,6 @@ public class UserService {
   public User getUserById(UUID id) {
     return userRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("User with ID " + id + " not found."));
+        .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
   }
 }

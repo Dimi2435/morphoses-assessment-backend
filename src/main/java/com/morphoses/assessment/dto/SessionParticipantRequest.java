@@ -1,9 +1,14 @@
 package com.morphoses.assessment.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
+@Schema(description = "Request object for session participant")
 public class SessionParticipantRequest {
+  @Schema(description = "The ID of the user participating in the session")
   private UUID userId;
+
+  @Schema(description = "Indicates if the participant is absent")
   private boolean isAbsent; // Only relevant for Kids
 
   public UUID getUserId() {

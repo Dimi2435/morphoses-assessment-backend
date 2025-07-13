@@ -1,11 +1,18 @@
 package com.morphoses.assessment.dto;
 
 import com.morphoses.assessment.util.UserType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
+@Schema(description = "Response object for user information")
 public class UserResponse {
+  @Schema(description = "The unique identifier of the user")
   private UUID id;
+
+  @Schema(description = "The type of user")
   private UserType userType;
+
+  @Schema(description = "The name of the user")
   private String name;
 
   public UserResponse(UUID id, UserType userType, String name) {
