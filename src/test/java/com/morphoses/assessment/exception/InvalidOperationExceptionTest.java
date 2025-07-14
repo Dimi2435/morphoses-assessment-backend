@@ -1,16 +1,15 @@
 package com.morphoses.assessment.exception;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class InvalidOperationExceptionTest {
+public class InvalidOperationExceptionTest {
 
   @Test
-  void testExceptionMessage() {
-    String message = "Invalid operation";
-    InvalidOperationException exception = new InvalidOperationException(message);
-
-    assertEquals(message, exception.getMessage());
+  public void testInvalidOperationExceptionMessage() {
+    String expectedMessage = "Invalid operation";
+    InvalidOperationException exception = new InvalidOperationException(expectedMessage);
+    assertEquals(expectedMessage, exception.getMessage());
   }
 }
