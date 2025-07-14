@@ -14,10 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Controller for managing classrooms.
- * Provides endpoints for creating and retrieving classrooms.
- * 
- * Author: Dimitrios Milios
+ * Controller for managing classrooms. Provides endpoints for creating and retrieving classrooms.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @RestController
 @RequestMapping(AppConstants.CLASSROOMS_ENDPOINT)

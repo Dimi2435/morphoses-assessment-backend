@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository interface for managing KidAnswer entities.
- * Provides methods to perform CRUD operations and custom queries.
- * 
- * Author: Dimitrios Milios
+ * Repository interface for managing KidAnswer entities. Provides methods to perform CRUD operations
+ * and custom queries.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Repository
 public interface KidAnswerRepository extends JpaRepository<KidAnswer, UUID> {

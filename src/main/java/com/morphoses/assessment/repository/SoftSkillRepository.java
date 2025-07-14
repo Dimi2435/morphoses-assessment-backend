@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository interface for managing SoftSkill entities.
- * Provides methods to perform CRUD operations.
- * 
- * Author: Dimitrios Milios
+ * Repository interface for managing SoftSkill entities. Provides methods to perform CRUD
+ * operations.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Repository
 public interface SoftSkillRepository extends JpaRepository<SoftSkill, UUID> {}

@@ -12,10 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Controller for managing reports.
- * Provides endpoints for retrieving session summaries.
- * 
- * Author: Dimitrios Milios
+ * Controller for managing reports. Provides endpoints for retrieving session summaries.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @RestController
 @RequestMapping(AppConstants.REPORTS_ENDPOINT)

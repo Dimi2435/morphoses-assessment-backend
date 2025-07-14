@@ -4,6 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.5'
     id 'com.diffplug.spotless' version '7.0.4' // Spotless plugin for formatting
     id 'jacoco' // Jacoco plugin for code coverage
+    // id 'org.flywaydb.flyway' version '10.22.0'
 }
 
 group = 'com.morphoses'
@@ -23,15 +24,18 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.flywaydb:flyway-core' // Flyway dependency
-    implementation 'org.postgresql:postgresql:42.5.0' // PostgreSQL JDBC driver
+    implementation 'org.flywaydb:flyway-core:10.22.0' // Explicitly set to match your plugin version or higher
+    //implementation 'org.postgresql:postgresql:42.6.0' // PostgreSQL JDBC driver
+    // H2 Database (for in-memory testing or simple local setup)
+    runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' // Latest JUnit version
     testImplementation 'org.mockito:mockito-core:5.4.0' // Latest Mockito version
+    // Keep only the starter UI dependency for Springdoc. It pulls in all necessary transitive dependencies.
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0' // For Swagger UI
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.14' // Ensure this is included for Swagger
     implementation 'org.springframework.boot:spring-boot-starter' // Ensure Spring Boot starter is included
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 

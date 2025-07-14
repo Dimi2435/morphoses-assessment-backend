@@ -27,9 +27,9 @@ import org.springframework.stereotype.Service;
 /**
  * Service class for generating reports in the Morphoses Assessment application.
  *
- * This class provides methods to retrieve and compare answers for sessions.
+ * <p>This class provides methods to retrieve and compare answers for sessions.
  *
- * Author: Dimitrios Milios
+ * <p>Author: Dimitrios Milios
  */
 @Service
 public class ReportService {
@@ -41,7 +41,8 @@ public class ReportService {
   @Autowired private SessionParticipantRepository sessionParticipantRepository;
 
   /**
-   * Retrieves and compares the answers of an instructor for a kid and the specified kid's own answers for a session.
+   * Retrieves and compares the answers of an instructor for a kid and the specified kid's own
+   * answers for a session.
    *
    * @param sessionId The ID of the session.
    * @param kidId The ID of the kid.

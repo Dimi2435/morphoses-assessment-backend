@@ -14,10 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Controller for managing sessions.
- * Provides endpoints for creating, completing, and retrieving sessions.
- * 
- * Author: Dimitrios Milios
+ * Controller for managing sessions. Provides endpoints for creating, completing, and retrieving
+ * sessions.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @RestController
 @RequestMapping(AppConstants.API_BASE_PATH + AppConstants.SESSIONS_ENDPOINT)

@@ -5,10 +5,10 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Entity class representing a Kid's answer in a session.
- * Contains information about the session, kid, soft skill, and the answer given.
- * 
- * Author: Dimitrios Milios
+ * Entity class representing a Kid's answer in a session. Contains information about the session,
+ * kid, soft skill, and the answer given.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Entity
 @Table(name = "kid_answers")

@@ -1,12 +1,9 @@
--- V1__create_initial_schema.sql
+-- V1__create_initial_schema.sql (Modified for H2)
 
--- Create ENUM type for user_type
-CREATE TYPE user_type_enum AS ENUM ('KID', 'INSTRUCTOR');
-
--- Table: users
+-- Table: users (user_type as VARCHAR)
 CREATE TABLE users (
     id UUID PRIMARY KEY,
-    user_type user_type_enum NOT NULL,
+    user_type VARCHAR(255) NOT NULL, -- Changed from ENUM
     name VARCHAR(255) NOT NULL
 );
 
@@ -34,7 +31,7 @@ CREATE TABLE sessions (
         REFERENCES classrooms(id)
 );
 
--- Junction Table: session_soft_skills (Many-to-Many between sessions and soft_skills)
+-- Junction Table: session_soft_skills
 CREATE TABLE session_soft_skills (
     session_id UUID NOT NULL,
     soft_skill_id UUID NOT NULL,
@@ -47,7 +44,7 @@ CREATE TABLE session_soft_skills (
         REFERENCES soft_skills(id)
 );
 
--- Junction Table: session_participants (Many-to-Many between sessions and users, with is_absent flag)
+-- Junction Table: session_participants
 CREATE TABLE session_participants (
     session_id UUID NOT NULL,
     user_id UUID NOT NULL,

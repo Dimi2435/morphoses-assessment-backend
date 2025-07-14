@@ -6,10 +6,10 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Entity class representing a User.
- * Contains information about the user, including their ID, type, and name.
- * 
- * Author: Dimitrios Milios
+ * Entity class representing a User. Contains information about the user, including their ID, type,
+ * and name.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Entity
 @Table(name = "users")

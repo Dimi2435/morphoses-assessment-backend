@@ -5,10 +5,10 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Entity class representing a Classroom.
- * Contains information about the classroom, including its ID and name.
- * 
- * Author: Dimitrios Milios
+ * Entity class representing a Classroom. Contains information about the classroom, including its ID
+ * and name.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Entity
 @Table(name = "classrooms")

@@ -11,39 +11,39 @@ import org.springframework.stereotype.Service;
 /**
  * Service class for managing users in the Morphoses Assessment application.
  *
- * This class provides methods to create and retrieve users.
+ * <p>This class provides methods to create and retrieve users.
  *
- * Author: Dimitrios Milios
+ * <p>Author: Dimitrios Milios
  */
 @Service
 public class UserService {
 
-    @Autowired private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-    /**
-     * Creates a new user with the specified user type and name.
-     *
-     * @param userType the type of user to create
-     * @param name the name of the user
-     * @return the created User object
-     */
-    public User createUser(UserType userType, String name) {
-        User user = new User();
-        user.setUserType(userType);
-        user.setName(name);
-        return userRepository.save(user);
-    }
+  /**
+   * Creates a new user with the specified user type and name.
+   *
+   * @param userType the type of user to create
+   * @param name the name of the user
+   * @return the created User object
+   */
+  public User createUser(UserType userType, String name) {
+    User user = new User();
+    user.setUserType(userType);
+    user.setName(name);
+    return userRepository.save(user);
+  }
 
-    /**
-     * Retrieves a user by their unique ID.
-     *
-     * @param id the unique ID of the user
-     * @return the User object associated with the given ID
-     * @throws UserNotFoundException if no user is found with the given ID
-     */
-    public User getUserById(UUID id) {
-        return userRepository
-            .findById(id)
-            .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
-    }
+  /**
+   * Retrieves a user by their unique ID.
+   *
+   * @param id the unique ID of the user
+   * @return the User object associated with the given ID
+   * @throws UserNotFoundException if no user is found with the given ID
+   */
+  public User getUserById(UUID id) {
+    return userRepository
+        .findById(id)
+        .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
+  }
 }

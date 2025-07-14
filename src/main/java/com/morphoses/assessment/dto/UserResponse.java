@@ -5,10 +5,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * Response object for user information.
- * Contains the user's ID, type, and name.
- * 
- * Author: Dimitrios Milios
+ * Response object for user information. Contains the user's ID, type, and name.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Schema(description = "Response object for user information")
 public class UserResponse {

@@ -4,10 +4,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * Request object for session participant.
- * Contains the user ID and absence status.
- * 
- * Author: Dimitrios Milios
+ * Request object for session participant. Contains the user ID and absence status.
+ *
+ * <p>Author: Dimitrios Milios
  */
 @Schema(description = "Request object for session participant")
 public class SessionParticipantRequest {
