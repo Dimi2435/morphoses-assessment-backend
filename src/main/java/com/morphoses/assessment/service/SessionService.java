@@ -24,22 +24,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Service class for managing sessions in the Morphoses Assessment application.
+ *
+ * This class provides methods to create, complete, and manage sessions.
+ *
+ * Author: Dimitrios Milios
+ */
 @Service
 public class SessionService {
 
-  @Autowired private SessionRepository sessionRepository;
-  @Autowired private ClassroomRepository classroomRepository;
-  @Autowired private SoftSkillRepository softSkillRepository;
-  @Autowired private UserRepository userRepository;
-  @Autowired private SessionParticipantRepository sessionParticipantRepository;
+    @Autowired private SessionRepository sessionRepository;
+    @Autowired private ClassroomRepository classroomRepository;
+    @Autowired private SoftSkillRepository softSkillRepository;
+    @Autowired private UserRepository userRepository;
+    @Autowired private SessionParticipantRepository sessionParticipantRepository;
 
-  @Transactional
-  public Session createSession(
-      UUID classroomId,
-      LocalDateTime startTime,
-      LocalDateTime endTime,
-      Set<UUID> softSkillIds,
-      Set<UUID> participantIds) {
+    /**
+     * Creates a new session with the specified details.
+     *
+     * @param classroomId the ID of the classroom for the session
+     * @param startTime the start time of the session
+     * @param endTime the end time of the session
+     * @param softSkillIds the IDs of the soft skills targeted in the session
+     * @param participantIds the IDs of the participants in the session
+     * @return the created Session object
+     * @throws ClassroomNotFoundException if the classroom ID is invalid
+     * @throws SoftSkillNotFoundException if any soft skill ID is invalid
+     * @throws UserNotFoundException if any participant ID is invalid
+     * @throws InvalidOperationException if the session does not meet the required conditions
+     */
+    @Transactional
+    public Session createSession(
+        UUID classroomId,
+        LocalDateTime startTime,
+        LocalDateTime endTime,
+        Set<UUID> softSkillIds,
+        Set<UUID> participantIds) {
 
     Classroom classroom =
         classroomRepository
@@ -105,8 +126,18 @@ public class SessionService {
     return sessionRepository.save(session); // Save again to persist participants
   }
 
-  @Transactional
-  public Session completeSession(UUID sessionId, UUID instructorId) {
+    /**
+     * Completes a session with the specified session ID and instructor ID.
+     *
+     * @param sessionId the ID of the session to complete
+     * @param instructorId the ID of the instructor completing the session
+     * @return the completed Session object
+     * @throws SessionNotFoundException if the session ID is invalid
+     * @throws UserNotFoundException if the instructor ID is invalid
+     * @throws InvalidOperationException if the instructor is not authorized to complete the session
+     */
+    @Transactional
+    public Session completeSession(UUID sessionId, UUID instructorId) {
     Session session =
         sessionRepository
             .findById(sessionId)
@@ -139,8 +170,18 @@ public class SessionService {
     return sessionRepository.save(session);
   }
 
-  @Transactional
-  public Session markKidAbsent(UUID sessionId, UUID kidId) {
+    /**
+     * Marks a kid as absent for a specified session.
+     *
+     * @param sessionId the ID of the session
+     * @param kidId the ID of the kid to mark as absent
+     * @return the updated Session object
+     * @throws SessionNotFoundException if the session ID is invalid
+     * @throws UserNotFoundException if the kid ID is invalid
+     * @throws InvalidOperationException if the kid is not a participant in the session
+     */
+    @Transactional
+    public Session markKidAbsent(UUID sessionId, UUID kidId) {
     Session session =
         sessionRepository
             .findById(sessionId)
@@ -172,7 +213,14 @@ public class SessionService {
     return session; // Return the session, which now reflects the updated participant status
   }
 
-  public Session getSessionById(UUID id) {
+    /**
+     * Retrieves a session by its unique ID.
+     *
+     * @param id the unique ID of the session
+     * @return the Session object associated with the given ID
+     * @throws SessionNotFoundException if no session is found with the given ID
+     */
+    public Session getSessionById(UUID id) {
     return sessionRepository
         .findById(id)
         .orElseThrow(() -> new SessionNotFoundException("Session not found with ID: " + id));

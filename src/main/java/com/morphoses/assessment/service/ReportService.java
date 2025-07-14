@@ -24,6 +24,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for generating reports in the Morphoses Assessment application.
+ *
+ * This class provides methods to retrieve and compare answers for sessions.
+ *
+ * Author: Dimitrios Milios
+ */
 @Service
 public class ReportService {
 
@@ -34,8 +41,7 @@ public class ReportService {
   @Autowired private SessionParticipantRepository sessionParticipantRepository;
 
   /**
-   * [cite_start]Retrieves and compares the answers of an instructor for a kid and the specified
-   * kid's own answers for a session. [cite: 18]
+   * Retrieves and compares the answers of an instructor for a kid and the specified kid's own answers for a session.
    *
    * @param sessionId The ID of the session.
    * @param kidId The ID of the kid.
@@ -122,7 +128,7 @@ public class ReportService {
   }
 
   /**
-   * [cite_start]Provides a summary report for a given session. [cite: 19]
+   * Provides a summary report for a given session.
    *
    * @param sessionId The ID of the session.
    * @return A map containing various summary metrics for the session.

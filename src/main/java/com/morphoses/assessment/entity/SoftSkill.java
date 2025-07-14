@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing a Soft Skill.
+ * Contains information about the soft skill, including its ID and name.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "soft_skills")
 public class SoftSkill {

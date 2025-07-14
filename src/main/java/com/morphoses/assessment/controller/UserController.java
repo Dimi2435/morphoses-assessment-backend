@@ -14,6 +14,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for managing users.
+ * Provides endpoints for creating and retrieving user information.
+ * 
+ * Author: Dimitrios Milios
+ */
 @RestController
 @RequestMapping(AppConstants.API_BASE_PATH + AppConstants.USERS_ENDPOINT)
 public class UserController {

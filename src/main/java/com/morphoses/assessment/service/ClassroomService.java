@@ -7,20 +7,40 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing classrooms in the Morphoses Assessment application.
+ *
+ * This class provides methods to create and retrieve classrooms.
+ *
+ * Author: Dimitrios Milios
+ */
 @Service
 public class ClassroomService {
 
-  @Autowired private ClassroomRepository classroomRepository;
+    @Autowired private ClassroomRepository classroomRepository;
 
-  public Classroom createClassroom(String name) {
-    Classroom classroom = new Classroom();
-    classroom.setName(name);
-    return classroomRepository.save(classroom);
-  }
+    /**
+     * Creates a new classroom with the specified name.
+     *
+     * @param name the name of the classroom
+     * @return the created Classroom object
+     */
+    public Classroom createClassroom(String name) {
+        Classroom classroom = new Classroom();
+        classroom.setName(name);
+        return classroomRepository.save(classroom);
+    }
 
-  public Classroom getClassroomById(UUID id) {
-    return classroomRepository
-        .findById(id)
-        .orElseThrow(() -> new ClassroomNotFoundException("Classroom not found with ID: " + id));
-  }
+    /**
+     * Retrieves a classroom by its unique ID.
+     *
+     * @param id the unique ID of the classroom
+     * @return the Classroom object associated with the given ID
+     * @throws ClassroomNotFoundException if no classroom is found with the given ID
+     */
+    public Classroom getClassroomById(UUID id) {
+        return classroomRepository
+            .findById(id)
+            .orElseThrow(() -> new ClassroomNotFoundException("Classroom not found with ID: " + id));
+    }
 }

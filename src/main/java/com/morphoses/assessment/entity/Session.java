@@ -7,6 +7,12 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Entity class representing a Session.
+ * Contains information about the classroom, start and end times, completion status, and associated soft skills and participants.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "sessions")
 public class Session {

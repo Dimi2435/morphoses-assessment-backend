@@ -9,6 +9,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for managing SessionParticipant entities.
+ * Provides methods to perform CRUD operations and custom queries.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Repository
 public interface SessionParticipantRepository extends JpaRepository<SessionParticipant, UUID> {
   List<SessionParticipant> findBySession(Session session);

@@ -5,6 +5,12 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing a User.
+ * Contains information about the user, including their ID, type, and name.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "users")
 public class User {

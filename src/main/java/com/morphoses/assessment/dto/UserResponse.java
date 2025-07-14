@@ -4,6 +4,12 @@ import com.morphoses.assessment.util.UserType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
+/**
+ * Response object for user information.
+ * Contains the user's ID, type, and name.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Schema(description = "Response object for user information")
 public class UserResponse {
   @Schema(description = "The unique identifier of the user")

@@ -3,6 +3,12 @@ package com.morphoses.assessment.dto;
 import com.morphoses.assessment.util.UserType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * Request object for creating a user.
+ * Contains the user's type and name.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Schema(description = "Request object for creating a user")
 public class UserCreateRequest {
   @Schema(description = "The type of user")

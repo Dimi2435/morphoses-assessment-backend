@@ -8,24 +8,39 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing soft skills in the Morphoses Assessment application.
+ *
+ * This class provides methods to initialize and retrieve soft skills.
+ *
+ * Author: Dimitrios Milios
+ */
 @Service
 public class SoftSkillService {
 
-  @Autowired private SoftSkillRepository softSkillRepository;
+    @Autowired private SoftSkillRepository softSkillRepository;
 
-  // This could be removed if DataInitializer handles all prepopulation
-  @PostConstruct
-  public void initSoftSkills() {
-    if (softSkillRepository.count() == 0) {
-      // Example of predefined soft skills [cite: 3]
-      softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Teamwork"));
-      softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Communication"));
-      softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Problem-solving"));
-      // ... add more of the 36 soft skills
+    /**
+     * Initializes predefined soft skills if none exist in the repository.
+     * This method is called after the bean is constructed.
+     */
+    @PostConstruct
+    public void initSoftSkills() {
+        if (softSkillRepository.count() == 0) {
+            // Example of predefined soft skills
+            softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Teamwork"));
+            softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Communication"));
+            softSkillRepository.save(new SoftSkill(UUID.randomUUID(), "Problem-solving"));
+            // ... add more of the 36 soft skills
+        }
     }
-  }
 
-  public List<SoftSkill> getAllSoftSkills() {
-    return softSkillRepository.findAll();
-  }
+    /**
+     * Retrieves all soft skills from the repository.
+     *
+     * @return a list of all SoftSkill objects
+     */
+    public List<SoftSkill> getAllSoftSkills() {
+        return softSkillRepository.findAll();
+    }
 }

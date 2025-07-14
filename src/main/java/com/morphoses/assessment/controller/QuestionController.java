@@ -15,6 +15,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for managing questions.
+ * Provides endpoints for retrieving relevant questions and submitting answers.
+ * 
+ * Author: Dimitrios Milios
+ */
 @RestController
 @RequestMapping(AppConstants.API_BASE_PATH + "/v" + AppConstants.DEFAULT_API_VERSION)
 public class QuestionController {

@@ -2,6 +2,12 @@ package com.morphoses.assessment.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * Request object for creating a classroom.
+ * Contains the name of the classroom.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Schema(description = "Request object for creating a classroom")
 public class ClassroomCreateRequest {
   @Schema(description = "The name of the classroom")

@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing an Instructor's answer in a session.
+ * Contains information about the session, instructor, kid, soft skill, and the answer given.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "instructor_answers")
 public class InstructorAnswer {

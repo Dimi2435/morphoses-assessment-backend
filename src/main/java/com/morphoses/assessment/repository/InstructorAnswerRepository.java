@@ -8,6 +8,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for managing InstructorAnswer entities.
+ * Provides methods to perform CRUD operations and custom queries.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Repository
 public interface InstructorAnswerRepository extends JpaRepository<InstructorAnswer, UUID> {
   List<InstructorAnswer> findBySessionAndKid(Session session, User kid);

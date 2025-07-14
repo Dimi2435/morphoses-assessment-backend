@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing a Classroom.
+ * Contains information about the classroom, including its ID and name.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "classrooms")
 public class Classroom {

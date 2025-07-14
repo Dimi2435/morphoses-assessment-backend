@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Entity class representing a participant in a session.
+ * Contains information about the session, user, and absence status.
+ * 
+ * Author: Dimitrios Milios
+ */
 @Entity
 @Table(name = "session_participants")
 public class SessionParticipant implements Serializable {
