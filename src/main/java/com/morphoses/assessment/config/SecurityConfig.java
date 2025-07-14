@@ -12,21 +12,17 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(
+    http.csrf()
+        .disable() // Disable CSRF protection
+        .authorizeHttpRequests(
             auth ->
-                auth.requestMatchers("/h2-console/**")
-                    .permitAll() // Allow access to H2 console
-                    .requestMatchers("/v3/api-docs/**")
-                    .permitAll() // Allow access to OpenAPI docs
-                    .requestMatchers("/swagger-ui/**")
-                    .permitAll() // Allow access to Swagger UI
-                    .anyRequest()
-                    .authenticated())
-        .csrf()
-        .disable() // Disable CSRF for H2 console
+                auth.anyRequest()
+                    .permitAll() // Allow access to all endpoints without authentication
+            )
         .headers()
         .frameOptions()
         .disable(); // Allow H2 console to be accessed in a frame
+
     return http.build();
   }
 }
