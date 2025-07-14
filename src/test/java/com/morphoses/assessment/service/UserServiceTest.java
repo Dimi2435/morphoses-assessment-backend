@@ -1,13 +1,16 @@
 package com.morphoses.assessment.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import com.morphoses.assessment.entity.User;
+import com.morphoses.assessment.exception.UserNotFoundException;
 import com.morphoses.assessment.repository.UserRepository;
 import com.morphoses.assessment.util.UserType;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,27 +33,28 @@ class UserServiceTest {
     user.setName("Test User");
   }
 
-  // @Test
-  // void createUser() {
-  //     when(userRepository.save(any(User.class))).thenReturn(user);
-  //     User createdUser = userService.createUser(UserType.KID, "Test User");
-  //     assertNotNull(createdUser);
-  //     //assertEquals(user.getName(), createdUser.getName());
-  //     //verify(userRepository, times(1)).save(any(User.class));
-  // }
+  @Test
+  void createUser_shouldReturnCreatedUser() {
+    when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+    User createdUser = userService.createUser(UserType.KID, "Test User");
+    assertNotNull(createdUser);
+    assertEquals("Test User", createdUser.getName());
+    assertEquals(UserType.KID, createdUser.getUserType());
+    verify(userRepository, times(1)).save(any(User.class));
+  }
 
-  // @Test
-  // void getUserById() {
-  //     when(userRepository.findById(user.getId())).thenReturn(java.util.Optional.of(user));
-  //     User foundUser = userService.getUserById(user.getId());
-  //     assertNotNull(foundUser);
-  //    // assertEquals(user.getId(), foundUser.getId());
-  // }
+  @Test
+  void getUserById_shouldReturnUserIfExists() {
+    when(userRepository.findById(user.getId())).thenReturn(java.util.Optional.of(user));
+    User foundUser = userService.getUserById(user.getId());
+    assertNotNull(foundUser);
+    assertEquals(user.getId(), foundUser.getId());
+    assertEquals(user.getName(), foundUser.getName());
+  }
 
-  // @Test
-  // void getUserById_NotFound() {
-  //     when(userRepository.findById(any(UUID.class))).thenReturn(java.util.Optional.empty());
-  //     assertThrows(EntityNotFoundException.class, () ->
-  // userService.getUserById(UUID.randomUUID()));
-  // }
+  @Test
+  void getUserById_shouldThrowIfUserNotFound() {
+    when(userRepository.findById(any(UUID.class))).thenReturn(java.util.Optional.empty());
+    assertThrows(UserNotFoundException.class, () -> userService.getUserById(UUID.randomUUID()));
+  }
 }
